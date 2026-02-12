@@ -8,181 +8,41 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --azul-oscuro: #152c59;
+            --azul-inicio: #152c59;
+            --azul-fin: #0f2142;
             --dorado: #d9ab4e;
-            --blanco: #fefefe;
+            --dorado-brillo: #f2cc81;
         }
-        .bg-macetii-azul { background-color: var(--azul-oscuro); }
-        .text-macetii-dorado { color: var(--dorado); }
-        .bg-macetii-dorado { background-color: var(--dorado); }
-        .border-macetii-dorado { border-color: var(--dorado); }
-    </style>
-</head>
-<body class="bg-gray-50 text-gray-800 font-sans">
 
-    <div class="bg-macetii-azul text-white py-2 px-4 text-sm hidden md:block">
-        <div class="container mx-auto flex justify-between">
-            <div>
-                <span class="mr-4"><i class="fas fa-phone mr-2 text-macetii-dorado"></i>(044) 725861</span>
-                <span><i class="fas fa-envelope mr-2 text-macetii-dorado"></i>macetii.etj@gmail.com</span>
-            </div>
-            <div>
-                <i class="fas fa-map-marker-alt mr-2 text-macetii-dorado"></i>Trujillo, Perú
-            </div>
-        </div>
-    </div>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #fefefe; }
 
-    <nav class="sticky top-0 z-50 bg-white shadow-md">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center">
-                <img src="https://ibb.co/bZtb3rm" alt="MACETII Logo" class="h-12 mr-3">
-                <span class="font-bold text-2xl tracking-tighter bg-macetii-azul text-white px-2 py-1">MACETII</span>
-            </div>
-            <div class="hidden md:flex space-x-8 font-semibold uppercase text-sm">
-                <a href="#inicio" class="hover:text-macetii-dorado">Inicio</a>
-                <a href="#nosotros" class="hover:text-macetii-dorado">Nosotros</a>
-                <a href="#servicios" class="hover:text-macetii-dorado">Servicios</a>
-                <a href="#contacto" class="hover:text-macetii-dorado">Contacto</a>
-            </div>
-            <a href="#reserva" class="bg-macetii-dorado text-white px-6 py-2 rounded-sm font-bold hover:bg-yellow-600 transition">RESERVAR CITA</a>
-        </div>
-    </nav>
+        /* Degradado de fondo */
+        .bg-gradient-macetii { background: linear-gradient(135deg, var(--azul-inicio), var(--azul-fin)); }
+        
+        /* Títulos con línea dorada */
+        .titulo-dorado::after {
+            content: ""; display: block; width: 60px; height: 3px; background-color: var(--dorado); margin-top: 10px;
+        }
+        .titulo-centro-dorado::after {
+            content: ""; display: block; width: 80px; height: 3px; background-color: var(--dorado); margin: 10px auto;
+        }
 
-    <section id="inicio" class="relative bg-macetii-azul text-white py-24 px-6 overflow-hidden">
-        <div class="container mx-auto relative z-10">
-            <div class="max-w-2xl">
-                <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6">Soluciones Integrales en <span class="text-macetii-dorado">Saneamiento Predial</span></h1>
-                <p class="text-lg mb-8 opacity-90">Brindamos asesoría técnica y legal con más de 12 años de experiencia en SUNARP. Garantizamos la seguridad jurídica de tu patrimonio.</p>
-                <div class="flex flex-wrap gap-4">
-                    <a href="#reserva" class="bg-macetii-dorado text-white px-8 py-3 rounded-md font-bold text-lg">Reserva tu Cita</a>
-                    <a href="#contacto" class="border-2 border-white px-8 py-3 rounded-md font-bold text-lg hover:bg-white hover:text-macetii-azul transition">Contáctanos</a>
-                </div>
-            </div>
-        </div>
-        <div class="absolute right-0 bottom-0 opacity-10 hidden lg:block">
-            <i class="fas fa-gavel text-[400px]"></i>
-        </div>
-    </section>
+        /* Botón Potente con Animación */
+        .btn-premium {
+            background: linear-gradient(145deg, var(--dorado), #b38a3a);
+            color: white; border: 2px solid var(--dorado-brillo);
+            box-shadow: 0 4px 15px rgba(217, 171, 78, 0.4);
+            transition: all 0.3s ease;
+        }
+        .btn-premium:hover {
+            transform: translateY(-3px); box-shadow: 0 8px 25px rgba(217, 171, 78, 0.6);
+            filter: brightness(1.1);
+        }
 
-    <section id="nosotros" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row items-center gap-12">
-                <div class="md:w-1/2">
-                    <h2 class="text-macetii-azul text-3xl font-bold mb-4 uppercase tracking-wider">Más de 12 años de Experiencia</h2>
-                    <div class="h-1 w-20 bg-macetii-dorado mb-6"></div>
-                    <p class="text-gray-600 mb-6 leading-relaxed">En MACETII – Estudio Técnico Jurídico, somos especialistas en trámites registrales y legales en Trujillo y todo el Perú. Trabajamos con profesionalismo, transparencia y compromiso.</p>
-                    <ul class="space-y-3">
-                        <li><i class="fas fa-check text-macetii-dorado mr-2"></i> Responsabilidad y Transparencia</li>
-                        <li><i class="fas fa-check text-macetii-dorado mr-2"></i> Eficiencia en procesos SUNARP</li>
-                        <li><i class="fas fa-check text-macetii-dorado mr-2"></i> Atención personalizada</li>
-                    </ul>
-                </div>
-                <div class="md:w-1/2 bg-gray-200 h-64 w-full flex items-center justify-center rounded-lg shadow-inner">
-                    <p class="text-gray-500 font-italic">[Imagen Corporativa / Fachada Local]</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="servicios" class="py-20 bg-gray-100">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-macetii-azul text-3xl font-bold mb-12 uppercase">Nuestros Servicios Especializados</h2>
-            <div class="grid md:grid-cols-3 gap-8 text-left">
-                <div class="bg-white p-8 border-t-4 border-macetii-dorado shadow-lg">
-                    <i class="fas fa-drafting-compass text-4xl text-macetii-azul mb-4"></i>
-                    <h3 class="text-xl font-bold mb-4">Área Técnica</h3>
-                    <ul class="text-sm space-y-2 text-gray-600">
-                        <li>• Declaratoria de fábrica</li>
-                        <li>• Independizaciones</li>
-                        <li>• Búsquedas catastrales</li>
-                        <li>• Subdivisiones / Tasaciones</li>
-                        <li>• Levantamiento de cargas</li>
-                    </ul>
-                </div>
-                <div class="bg-white p-8 border-t-4 border-macetii-azul shadow-lg">
-                    <i class="fas fa-balance-scale text-4xl text-macetii-azul mb-4"></i>
-                    <h3 class="text-xl font-bold mb-4">Área Legal</h3>
-                    <ul class="text-sm space-y-2 text-gray-600">
-                        <li>• Prescripción adquisitiva</li>
-                        <li>• Inmatriculaciones</li>
-                        <li>• Sucesiones intestadas</li>
-                        <li>• Levantamiento de hipotecas</li>
-                        <li>• Traslado de dominio</li>
-                    </ul>
-                </div>
-                <div class="bg-white p-8 border-t-4 border-gray-400 shadow-lg">
-                    <i class="fas fa-car text-4xl text-macetii-azul mb-4"></i>
-                    <h3 class="text-xl font-bold mb-4">Trámites Extra</h3>
-                    <ul class="text-sm space-y-2 text-gray-600">
-                        <li>• Inscripción vehicular</li>
-                        <li>• Cambio de placas</li>
-                        <li>• Constitución de empresas</li>
-                        <li>• Reserva de nombre</li>
-                        <li>• Modificación de estatutos</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="reserva" class="py-20 bg-macetii-azul text-white">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <div class="text-center mb-10">
-                <h2 class="text-3xl font-bold">RESERVA TU CITA</h2>
-                <p class="text-macetii-dorado">Atención técnica y legal personalizada</p>
-            </div>
-            <form class="grid md:grid-cols-2 gap-6 bg-white p-8 rounded-lg text-gray-800">
-                <input type="text" placeholder="Nombre completo" class="border p-3 rounded focus:outline-macetii-dorado">
-                <input type="text" placeholder="Teléfono" class="border p-3 rounded focus:outline-macetii-dorado">
-                <input type="email" placeholder="Correo electrónico" class="border p-3 rounded focus:outline-macetii-dorado">
-                <select class="border p-3 rounded focus:outline-macetii-dorado text-gray-500">
-                    <option>Servicio de interés</option>
-                    <option>Área Técnica</option>
-                    <option>Área Legal</option>
-                    <option>Trámite Vehicular</option>
-                </select>
-                <input type="date" class="border p-3 rounded focus:outline-macetii-dorado">
-                <textarea placeholder="Mensaje adicional" class="border p-3 rounded md:col-span-2 focus:outline-macetii-dorado"></textarea>
-                <button type="submit" class="md:col-span-2 bg-macetii-dorado text-white font-bold py-4 rounded hover:bg-yellow-600 transition uppercase">Enviar Reserva</button>
-            </form>
-        </div>
-    </section>
-
-    <footer id="contacto" class="bg-gray-900 text-white pt-16 pb-8">
-        <div class="container mx-auto px-6 grid md:grid-cols-3 gap-12">
-            <div>
-                <h3 class="text-macetii-dorado font-bold text-xl mb-6">MACETII</h3>
-                <p class="text-gray-400 text-sm mb-4 leading-relaxed">Especialistas en la seguridad de tu patrimonio. Más de 12 años liderando el sector técnico-jurídico en Trujillo.</p>
-                <div class="flex space-x-4">
-                    <a href="https://www.facebook.com/profile.php?id=61575778253649" class="hover:text-macetii-dorado text-2xl"><i class="fab fa-facebook"></i></a>
-                    <a href="https://wa.me/51980652872" class="hover:text-macetii-dorado text-2xl"><i class="fab fa-whatsapp"></i></a>
-                </div>
-            </div>
-            <div>
-                <h3 class="text-white font-bold mb-6">CONTACTO</h3>
-                <ul class="text-gray-400 space-y-3 text-sm">
-                    <li><i class="fas fa-map-marker-alt text-macetii-dorado mr-2"></i> Pasaje Los Mirlos N°155, Urb. Los Pinos, Trujillo</li>
-                    <li><i class="fas fa-phone text-macetii-dorado mr-2"></i> (044) 725861</li>
-                    <li><i class="fas fa-mobile-alt text-macetii-dorado mr-2"></i> 980 652 872</li>
-                    <li><i class="fas fa-envelope text-macetii-dorado mr-2"></i> macetii.etj@gmail.com</li>
-                </ul>
-            </div>
-            <div>
-                <h3 class="text-white font-bold mb-6">HORARIOS</h3>
-                <p class="text-gray-400 text-sm">Lunes a Viernes:<br>9:00 a.m. – 6:00 p.m.</p>
-                <div class="mt-6 bg-gray-800 h-32 flex items-center justify-center rounded border border-gray-700">
-                    <span class="text-xs text-gray-500">[Mapa de Google Maps aquí]</span>
-                </div>
-            </div>
-        </div>
-        <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-xs uppercase tracking-widest">
-            &copy; 2024 MACETII – Estudio Técnico Jurídico. Todos los derechos reservados.
-        </div>
-    </footer>
-
-    <a href="https://wa.me/51980652872" class="fixed bottom-6 right-6 bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl hover:bg-green-600 transition-all z-[100]">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-</body>
-</html>
+        /* Tarjetas con profundidad y borde dorado */
+        .card-servicio {
+            background: white; border-radius: 12px; border: 1px solid rgba(217, 171, 78, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.4s ease;
+        }
+        .card-servicio:hover {
+            transform: translateY(-10px); border
