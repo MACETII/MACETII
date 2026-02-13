@@ -3,169 +3,425 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MACETII | Estudio Técnico Jurídico</title>
+    <title>MACETII | Estudio Técnico Jurídico - Saneamiento Predial</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --azul-inicio: #152c59;
-            --azul-fin: #0f2142;
+            --azul-oscuro: #152c59;
             --dorado: #d9ab4e;
-            --dorado-brillo: #f2cc81;
+            --blanco: #fefefe;
+            --overlay: rgba(21, 44, 89, 0.85);
         }
 
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #fefefe; }
-
-        /* Degradado de fondo */
-        .bg-gradient-macetii { background: linear-gradient(135deg, var(--azul-inicio), var(--azul-fin)); }
-        
-        /* Títulos con línea dorada */
-        .titulo-dorado::after {
-            content: ""; display: block; width: 60px; height: 3px; background-color: var(--dorado); margin-top: 10px;
-        }
-        .titulo-centro-dorado::after {
-            content: ""; display: block; width: 80px; height: 3px; background-color: var(--dorado); margin: 10px auto;
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0b1629;
+            color: var(--blanco);
+            scroll-behavior: smooth;
         }
 
-        /* Botón Potente con Animación */
-        .btn-premium {
-            background: linear-gradient(145deg, var(--dorado), #b38a3a);
-            color: white; border: 2px solid var(--dorado-brillo);
-            box-shadow: 0 4px 15px rgba(217, 171, 78, 0.4);
+        .font-serif { font-family: 'Playfair Display', serif; }
+
+        /* Estilos de la imagen de referencia */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(217, 171, 78, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .glass-card:hover {
+            border-color: var(--dorado);
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.07);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .gold-line {
+            height: 3px;
+            background: linear-gradient(90deg, var(--dorado), transparent);
+            width: 100px;
+            margin-top: 10px;
+        }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #d9ab4e 0%, #b88a2e 100%);
+            color: #152c59;
+            font-weight: 700;
             transition: all 0.3s ease;
-        }
-        .btn-premium:hover {
-            transform: translateY(-3px); box-shadow: 0 8px 25px rgba(217, 171, 78, 0.6);
-            filter: brightness(1.1);
+            box-shadow: 0 4px 15px rgba(217, 171, 78, 0.3);
         }
 
-        /* Tarjetas con profundidad y borde dorado */
-        .card-servicio {
-            background: white; border-radius: 12px; border: 1px solid rgba(217, 171, 78, 0.2);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: all 0.4s ease;
-        }
-        .card-servicio:hover {
-            transform: translateY(-10px); border-color: var(--dorado);
-            box-shadow: 0 15px 40px rgba(15, 33, 66, 0.15);
+        .btn-gold:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(217, 171, 78, 0.5);
         }
 
-        /* Hero Image con Overlay */
-        .hero-overlay {
-            background: linear-gradient(to right, rgba(15, 33, 66, 0.9), rgba(15, 33, 66, 0.4)), 
-                        url('https://i.ibb.co/TFXXhNN/hero-macetii.jpg');
-            background-size: cover; background-position: center;
+        .border-gold { border: 1px solid var(--dorado); }
+        .text-gold { color: var(--dorado); }
+
+        .hero-section {
+            background: linear-gradient(var(--overlay), var(--overlay)), url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
         }
 
-        /* Separadores dorados */
-        .divider-oro { border-bottom: 2px solid var(--dorado); width: 100%; opacity: 0.3; }
+        .service-icon {
+            filter: drop-shadow(0 0 8px rgba(217, 171, 78, 0.4));
+        }
+
+        .floating-buttons {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .float-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+
+        .float-btn:hover { transform: scale(1.1); }
     </style>
 </head>
 <body>
 
-    <nav class="bg-gradient-macetii sticky top-0 z-50 py-4 border-b border-[#d9ab4e33]">
-        <div class="container mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center">
-                <div class="text-white font-bold text-2xl tracking-widest uppercase">
-                    MACETII <span class="text-macetii-dorado block text-[10px] text-[#d9ab4e]">Estudio Técnico Jurídico</span>
+    <!-- BOTONES FLOTANTES -->
+    <div class="floating-buttons">
+        <a href="https://wa.me/51980652872" class="float-btn bg-green-500"><i data-lucide="message-circle"></i></a>
+        <a href="tel:980652872" class="float-btn bg-blue-600"><i data-lucide="phone"></i></a>
+        <a href="https://www.facebook.com/profile.php?id=61575778253649" class="float-btn bg-blue-800"><i data-lucide="facebook"></i></a>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="sticky top-0 z-50 bg-[#152c59]/95 backdrop-blur-md border-b border-[#d9ab4e]/20 py-4 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <img src="https://i.ibb.co/bZtb3rm/MI-LOGO.jpg" alt="MACETII Logo" class="h-12 border border-[#d9ab4e]/30 rounded">
+                <div class="hidden md:block">
+                    <span class="block font-bold text-xl tracking-tighter">MACETII</span>
+                    <span class="text-[9px] uppercase tracking-widest text-[#d9ab4e]">Estudio Técnico Jurídico</span>
                 </div>
             </div>
-            <div class="hidden md:flex space-x-8 text-white text-sm font-medium uppercase">
-                <a href="#" class="hover:text-[#d9ab4e] transition">Inicio</a>
-                <a href="#" class="hover:text-[#d9ab4e] transition">Nosotros</a>
-                <a href="#" class="hover:text-[#d9ab4e] transition">Servicios</a>
-                <a href="#" class="btn-premium px-5 py-2 rounded text-xs">Reservar Cita</a>
+            <div class="hidden lg:flex gap-8 text-xs font-bold uppercase tracking-widest">
+                <a href="#inicio" class="hover:text-[#d9ab4e] transition">Inicio</a>
+                <a href="#nosotros" class="hover:text-[#d9ab4e] transition">Nosotros</a>
+                <a href="#servicios" class="hover:text-[#d9ab4e] transition">Servicios</a>
+                <a href="#contacto" class="hover:text-[#d9ab4e] transition">Contacto</a>
             </div>
+            <a href="https://wa.me/51980652872" class="btn-gold px-6 py-2 rounded text-xs uppercase">Reserva Cita</a>
         </div>
     </nav>
 
-    <header class="hero-overlay h-[600px] flex items-center text-white relative">
-        <div class="container mx-auto px-6 relative z-10">
-            <h1 class="text-5xl md:text-6xl font-extrabold mb-4 titulo-dorado leading-tight">Expertos en <br> <span class="text-[#d9ab4e]">Saneamiento Predial</span></h1>
-            <p class="text-xl max-w-xl mb-10 text-gray-200">Seguridad jurídica y técnica para tu patrimonio con más de 12 años de trayectoria en Trujillo.</p>
-            <div class="flex gap-4">
-                <button class="btn-premium px-10 py-4 rounded-lg font-bold text-lg uppercase tracking-wider">Reserva tu Cita</button>
+    <!-- HERO SECTION -->
+    <header id="inicio" class="hero-section min-h-[90vh] flex items-center relative py-20">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <h2 class="text-[#d9ab4e] font-bold tracking-[0.3em] uppercase mb-4 text-sm">Más de 12 años de experiencia</h2>
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">Expertos en <br><span class="text-[#d9ab4e]">Saneamiento Predial</span></h1>
+                <div class="gold-line mb-8"></div>
+                <p class="text-slate-300 text-lg mb-10 leading-relaxed max-w-lg">
+                    Brindamos soluciones integrales en área legal y técnica en Trujillo y todo el Perú. Seguridad jurídica y respaldo para su patrimonio.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#reservar" class="btn-gold px-10 py-4 rounded shadow-xl">RESERVA TU CITA</a>
+                    <a href="#contacto" class="border border-white/30 px-10 py-4 rounded hover:bg-white/10 transition">CONTÁCTANOS</a>
+                </div>
+            </div>
+
+            <!-- FORMULARIO DE RESERVA (ESTILO IMAGEN REFERENCIA) -->
+            <div id="reservar" class="glass-card p-8 rounded-2xl border-2 border-[#d9ab4e]/40 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-[#d9ab4e]/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+                <h3 class="text-2xl font-bold mb-2 text-center">RESERVA TU CITA</h3>
+                <p class="text-center text-[#d9ab4e] text-xs uppercase tracking-widest mb-8">Atención Especializada SUNARP</p>
+                
+                <form class="space-y-4">
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <input type="text" placeholder="Nombre completo" class="w-full bg-white/5 border border-white/10 p-3 rounded text-sm focus:border-[#d9ab4e] outline-none transition">
+                        <input type="tel" placeholder="Teléfono / WhatsApp" class="w-full bg-white/5 border border-white/10 p-3 rounded text-sm focus:border-[#d9ab4e] outline-none transition">
+                    </div>
+                    <input type="email" placeholder="Correo electrónico" class="w-full bg-white/5 border border-white/10 p-3 rounded text-sm focus:border-[#d9ab4e] outline-none transition">
+                    <select class="w-full bg-[#152c59] border border-white/10 p-3 rounded text-sm focus:border-[#d9ab4e] outline-none transition">
+                        <option>Seleccione Servicio de Interés</option>
+                        <option>Declaratoria de Fábrica</option>
+                        <option>Independización</option>
+                        <option>Área Legal (Prescripción/Sucesión)</option>
+                        <option>Trámite Vehicular</option>
+                    </select>
+                    <textarea placeholder="Cuéntenos sobre su caso..." rows="3" class="w-full bg-white/5 border border-white/10 p-3 rounded text-sm focus:border-[#d9ab4e] outline-none transition"></textarea>
+                    
+                    <button type="submit" class="btn-gold w-full py-4 rounded text-sm uppercase tracking-widest hover:brightness-110">Enviar Solicitud de Reserva</button>
+                </form>
             </div>
         </div>
     </header>
 
-    <section class="py-24 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-center text-3xl font-bold text-[#152c59] mb-16 titulo-centro-dorado uppercase">Nuestros Servicios</h2>
-            
-            <div class="grid md:grid-cols-3 gap-10">
-                <div class="card-servicio p-8 text-center">
-                    <div class="w-16 h-16 bg-[#152c59] rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-[#d9ab4e]">
-                        <i class="fas fa-drafting-compass text-[#d9ab4e] text-2xl"></i>
-                    </div>
-                    <h3 class="font-bold text-xl mb-4 text-[#152c59]">Área Técnica</h3>
-                    <div class="divider-oro mb-4"></div>
-                    <ul class="text-gray-600 text-sm space-y-3">
-                        <li>Declaratoria de Fábrica</li>
-                        <li>Independizaciones</li>
-                        <li>Búsquedas Catastrales</li>
-                        <li>Levantamiento de Cargas</li>
-                    </ul>
+    <!-- NOSOTROS -->
+    <section id="nosotros" class="py-24 bg-[#0b1629]">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+            <div class="relative">
+                <div class="absolute -top-4 -left-4 w-24 h-24 border-t-4 border-l-4 border-[#d9ab4e]"></div>
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80" class="rounded-lg shadow-2xl grayscale hover:grayscale-0 transition duration-700" alt="Empresa Confiable">
+                <div class="absolute -bottom-10 -right-10 bg-[#152c59] p-8 border border-[#d9ab4e] shadow-xl">
+                    <span class="block text-4xl font-bold text-[#d9ab4e]">+12</span>
+                    <span class="text-xs uppercase tracking-widest">Años de éxito</span>
                 </div>
-
-                <div class="card-servicio p-8 text-center relative overflow-hidden">
-                    <div class="absolute top-0 left-0 w-full h-1 bg-[#d9ab4e]"></div>
-                    <div class="w-16 h-16 bg-[#152c59] rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-[#d9ab4e]">
-                        <i class="fas fa-balance-scale text-[#d9ab4e] text-2xl"></i>
+            </div>
+            <div>
+                <h4 class="text-[#d9ab4e] font-bold uppercase text-xs tracking-widest mb-4">La Firma</h4>
+                <h2 class="text-4xl font-bold mb-6">Compromiso, Transparencia <br>y Eficiencia Jurídica</h2>
+                <div class="gold-line mb-8"></div>
+                <p class="text-slate-400 leading-relaxed mb-6">
+                    En MACETII somos especialistas en el saneamiento físico legal de predios. Con más de una década de experiencia ante la SUNARP, garantizamos que su patrimonio cuente con el respaldo legal que merece.
+                </p>
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="flex items-start gap-3">
+                        <i data-lucide="check-circle" class="text-[#d9ab4e] shrink-0"></i>
+                        <span class="text-sm font-semibold">Respaldo Técnico Especializado</span>
                     </div>
-                    <h3 class="font-bold text-xl mb-4 text-[#152c59]">Área Legal</h3>
-                    <div class="divider-oro mb-4"></div>
-                    <ul class="text-gray-600 text-sm space-y-3">
-                        <li>Prescripción Adquisitiva</li>
-                        <li>Sucesiones Intestadas</li>
-                        <li>Levantamiento de Hipotecas</li>
-                        <li>Inmatriculaciones</li>
-                    </ul>
-                </div>
-
-                <div class="card-servicio p-8 text-center">
-                    <div class="w-16 h-16 bg-[#152c59] rounded-full flex items-center justify-center mx-auto mb-6 border-2 border-[#d9ab4e]">
-                        <i class="fas fa-car text-[#d9ab4e] text-2xl"></i>
+                    <div class="flex items-start gap-3">
+                        <i data-lucide="check-circle" class="text-[#d9ab4e] shrink-0"></i>
+                        <span class="text-sm font-semibold">Asesoría Legal Personalizada</span>
                     </div>
-                    <h3 class="font-bold text-xl mb-4 text-[#152c59]">Trámites Extra</h3>
-                    <div class="divider-oro mb-4"></div>
-                    <ul class="text-gray-600 text-sm space-y-3">
-                        <li>Inscripción Vehicular</li>
-                        <li>Cambio de Placas</li>
-                        <li>Constitución de Empresas</li>
-                        <li>Reserva de Nombre</li>
-                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-gradient-macetii relative">
-        <div class="container mx-auto px-6">
-            <div class="bg-white rounded-2xl shadow-2xl flex flex-col md:flex-row overflow-hidden border border-[#d9ab4e]">
-                <div class="md:w-1/2 p-12 bg-gray-50">
-                    <h2 class="text-2xl font-bold text-[#152c59] mb-6 titulo-dorado">Contáctanos ahora</h2>
-                    <p class="mb-8 text-gray-500 italic">"Estamos listos para asesorarte en Trujillo y todo el Perú."</p>
-                    <div class="space-y-4">
-                        <div class="flex items-center"><i class="fas fa-phone-alt text-[#d9ab4e] mr-4 text-xl"></i> 980 652 872</div>
-                        <div class="flex items-center"><i class="fas fa-envelope text-[#d9ab4e] mr-4 text-xl"></i> macetii.etj@gmail.com</div>
-                        <div class="flex items-center"><i class="fas fa-map-marker-alt text-[#d9ab4e] mr-4 text-xl"></i> Pasaje Los Mirlos N°155, Urb. Los Pinos</div>
+    <!-- SERVICIOS -->
+    <section id="servicios" class="py-24 bg-[#152c59]/20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-bold mb-4 uppercase tracking-tighter italic">Nuestros Servicios</h2>
+                <div class="gold-line mx-auto mb-6"></div>
+                <p class="text-slate-400">Soluciones integrales bajo un mismo respaldo corporativo.</p>
+            </div>
+
+            <!-- AREA TÉCNICA -->
+            <div class="mb-20">
+                <h3 class="flex items-center gap-3 text-2xl font-bold mb-10 text-[#d9ab4e]">
+                    <i data-lucide="ruler"></i> ÁREA TÉCNICA
+                </h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="glass-card p-6 rounded-xl">
+                        <h4 class="font-bold mb-3 border-b border-[#d9ab4e]/20 pb-2">Declaratoria de Fábrica</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">Inscripción de construcciones y ampliaciones en el registro de predios.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-xl">
+                        <h4 class="font-bold mb-3 border-b border-[#d9ab4e]/20 pb-2">Independizaciones</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">División de terrenos y edificios en unidades inmobiliarias independientes.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-xl">
+                        <h4 class="font-bold mb-3 border-b border-[#d9ab4e]/20 pb-2">Búsquedas Catastrales</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">Verificación técnica de áreas y linderos ante catastro SUNARP.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-xl">
+                        <h4 class="font-bold mb-3 border-b border-[#d9ab4e]/20 pb-2">Levantamiento de Cargas</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">Saneamiento de observaciones técnicas en partidas registrales.</p>
                     </div>
                 </div>
-                <div class="md:w-1/2 p-12 bg-white">
-                    <form class="space-y-4">
-                        <input type="text" placeholder="Tu Nombre" class="w-full border-b-2 border-gray-200 focus:border-[#d9ab4e] py-2 outline-none transition">
-                        <input type="email" placeholder="Correo electrónico" class="w-full border-b-2 border-gray-200 focus:border-[#d9ab4e] py-2 outline-none transition">
-                        <textarea placeholder="¿En qué servicio estás interesado?" class="w-full border-b-2 border-gray-200 focus:border-[#d9ab4e] py-2 outline-none transition h-24"></textarea>
-                        <button type="submit" class="btn-premium w-full py-4 rounded font-bold uppercase">Solicitar Información</button>
-                    </form>
+            </div>
+
+            <!-- AREA LEGAL -->
+            <div class="mb-20">
+                <h3 class="flex items-center gap-3 text-2xl font-bold mb-10 text-[#d9ab4e]">
+                    <i data-lucide="scale"></i> ÁREA LEGAL
+                </h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="glass-card p-6 rounded-xl">
+                        <h4 class="font-bold mb-3 border-b border-[#d9ab4e]/20 pb-2">Prescripción Adquisitiva</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">Obtención de título de propiedad mediante la posesión continua.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-xl">
+                        <h4 class="font-bold mb-3 border-b border-[#d9ab4e]/20 pb-2">Sucesiones Intestadas</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">Declaratoria de herederos para transferencia de bienes.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-xl">
+                        <h4 class="font-bold mb-3 border-b border-[#d9ab4e]/20 pb-2">Levantamiento Hipotecas</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">Liberación registral de gravámenes y préstamos cancelados.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-xl">
+                        <h4 class="font-bold mb-3 border-b border-[#d9ab4e]/20 pb-2">Inmatriculaciones</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed">Primera inscripción de dominio de un predio en Registros Públicos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AREA VEHICULAR Y OTROS -->
+            <div>
+                <h3 class="flex items-center gap-3 text-2xl font-bold mb-10 text-[#d9ab4e]">
+                    <i data-lucide="car"></i> TRÁMITES REGISTRALES & VEHICULARES
+                </h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="glass-card p-6 rounded-xl border-dashed">
+                        <h4 class="font-bold mb-3 border-b border-[#d9ab4e]/20 pb-2">Gestión Vehicular</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed italic">Cambio de placas, cambio de características, inscripciones y otros.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-xl border-dashed">
+                        <h4 class="font-bold mb-3 border-b border-[#d9ab4e]/20 pb-2">Constitución de Empresas</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed italic">Elaboración de minutas, estátutos y reserva de nombre SUNARP.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-xl border-dashed">
+                        <h4 class="font-bold mb-3 border-b border-[#d9ab4e]/20 pb-2">Otros Trámites</h4>
+                        <p class="text-xs text-slate-400 leading-relaxed italic">Modificación de estatutos, rectificaciones y asesoría general.</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <a href="https://wa.me/51980652872" class="fixed bottom-8 right-8 bg-[#25d366] text-white w-16 h-16 rounded-full flex items-center justify-center text-3xl shadow-2xl z-50 hover:scale-110 transition-all border-4 border-white">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- TESTIMONIOS -->
+    <section class="py-24 bg-[#0b1629]">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-center text-3xl font-bold mb-16">CLIENTES SATISFECHOS</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Testimonio 1 -->
+                <div class="glass-card p-8 rounded-2xl relative">
+                    <i data-lucide="quote" class="absolute top-4 right-4 text-[#d9ab4e]/20 w-12 h-12"></i>
+                    <p class="text-sm italic mb-6 leading-relaxed">"Excelente atención. Lograron independizar mi propiedad en el tiempo pactado después de años de intentos fallidos con otros gestores."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-[#152c59] flex items-center justify-center font-bold text-[#d9ab4e]">R.M.</div>
+                        <div>
+                            <span class="block font-bold">Ricardo Mendoza</span>
+                            <span class="text-[10px] text-[#d9ab4e] uppercase">Saneamiento Trujillo</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonio 2 -->
+                <div class="glass-card p-8 rounded-2xl relative border-t-4 border-t-[#d9ab4e]">
+                    <i data-lucide="quote" class="absolute top-4 right-4 text-[#d9ab4e]/20 w-12 h-12"></i>
+                    <p class="text-sm italic mb-6 leading-relaxed">"El profesionalismo del equipo legal es impecable. Su asesoría en la sucesión intestada de mi familia fue clara y efectiva."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-[#152c59] flex items-center justify-center font-bold text-[#d9ab4e]">L.G.</div>
+                        <div>
+                            <span class="block font-bold">Laura García</span>
+                            <span class="text-[10px] text-[#d9ab4e] uppercase">Trámite Legal</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonio 3 -->
+                <div class="glass-card p-8 rounded-2xl relative">
+                    <i data-lucide="quote" class="absolute top-4 right-4 text-[#d9ab4e]/20 w-12 h-12"></i>
+                    <p class="text-sm italic mb-6 leading-relaxed">"Recomendados al 100%. Trámite vehicular rápido y seguro. MACETII es sinónimo de confianza en la ciudad."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full bg-[#152c59] flex items-center justify-center font-bold text-[#d9ab4e]">J.C.</div>
+                        <div>
+                            <span class="block font-bold">Juan Carlos Paredes</span>
+                            <span class="text-[10px] text-[#d9ab4e] uppercase">Servicios Varios</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- UBICACIÓN Y CONTACTO -->
+    <section id="contacto" class="py-24 bg-[#152c59]/10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <div>
+                    <h2 class="text-3xl font-bold mb-8">UBÍCANOS</h2>
+                    <div class="glass-card p-4 rounded-xl mb-6 overflow-hidden h-[350px]">
+                        <!-- Simulación de Mapa -->
+                        <div class="w-full h-full bg-slate-800 flex flex-col items-center justify-center text-center p-10">
+                            <i data-lucide="map-pin" class="w-12 h-12 text-[#d9ab4e] mb-4"></i>
+                            <h4 class="font-bold mb-2">Trujillo, La Libertad</h4>
+                            <p class="text-sm text-slate-400">Pasaje Los Mirlos N°155, Urb. Los Pinos, Mz G Lote 14</p>
+                            <a href="https://maps.google.com" target="_blank" class="mt-6 text-[#d9ab4e] text-xs font-bold underline">VER EN GOOGLE MAPS</a>
+                        </div>
+                    </div>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="flex items-center gap-4">
+                            <i data-lucide="clock" class="text-[#d9ab4e]"></i>
+                            <div>
+                                <span class="block font-bold text-sm">Horario</span>
+                                <span class="text-xs text-slate-400">Lun-Vie: 9am - 6pm</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <i data-lucide="mail" class="text-[#d9ab4e]"></i>
+                            <div>
+                                <span class="block font-bold text-sm">Email</span>
+                                <span class="text-xs text-slate-400">macetii.etj@gmail.com</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col justify-center">
+                    <div class="bg-white/5 p-10 rounded-2xl border border-white/10">
+                        <h3 class="text-2xl font-bold mb-8 flex items-center gap-4 italic uppercase tracking-tighter">
+                            <span class="w-10 h-[2px] bg-[#d9ab4e]"></span> Contacto Rápido
+                        </h3>
+                        <div class="space-y-6">
+                            <a href="https://wa.me/51980652872" class="flex items-center justify-between p-4 bg-[#152c59] rounded-lg border border-[#d9ab4e]/30 hover:bg-[#d9ab4e] hover:text-[#152c59] transition group">
+                                <span class="flex items-center gap-3 font-bold"><i data-lucide="message-square" class="text-[#d9ab4e] group-hover:text-[#152c59]"></i> WhatsApp</span>
+                                <span class="text-xs">980 652 872</span>
+                            </a>
+                            <a href="tel:044725861" class="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/10 hover:border-[#d9ab4e] transition">
+                                <span class="flex items-center gap-3 font-bold"><i data-lucide="phone-call" class="text-[#d9ab4e]"></i> Teléfono Fijo</span>
+                                <span class="text-xs">(044) 725861</span>
+                            </a>
+                        </div>
+                        <div class="mt-10 p-6 border-t border-white/10">
+                            <p class="text-xs text-slate-400 text-center leading-relaxed">
+                                "Somos tu aliado estratégico en trámites registrales y legales en Trujillo y todo el Perú."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#152c59] py-12 px-6">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="flex items-center gap-4">
+                <img src="https://i.ibb.co/bZtb3rm/MI-LOGO.jpg" alt="MACETII Logo" class="h-10 border border-[#d9ab4e]/20">
+                <div>
+                    <span class="block font-bold">MACETII</span>
+                    <span class="text-[8px] uppercase tracking-widest text-[#d9ab4e]">Estudio Técnico Jurídico</span>
+                </div>
+            </div>
+            <p class="text-[10px] text-white/50 uppercase tracking-[0.3em] text-center">
+                &copy; 2024 MACETII - Seguridad y Respaldo para tu Patrimonio
+            </p>
+            <div class="flex gap-4">
+                <a href="#" class="w-8 h-8 rounded bg-white/5 flex items-center justify-center hover:bg-[#d9ab4e] hover:text-[#152c59] transition"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+                <a href="#" class="w-8 h-8 rounded bg-white/5 flex items-center justify-center hover:bg-[#d9ab4e] hover:text-[#152c59] transition"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Inicializar iconos
+        lucide.createIcons();
+
+        // Efecto scroll suave para los enlaces del menú
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
