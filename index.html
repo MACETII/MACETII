@@ -103,7 +103,7 @@
 
     <!-- BOTONES FLOTANTES -->
     <div class="floating-buttons">
-        <a href="https://wa.me/51980652872" class="float-btn bg-green-500"><i data-lucide="message-circle"></i></a>
+        <a href="https://wa.me/51977662514" class="float-btn bg-green-500"><i data-lucide="message-circle"></i></a>
         <a href="tel:980652872" class="float-btn bg-blue-600"><i data-lucide="phone"></i></a>
         <a href="https://www.facebook.com/profile.php?id=61575778253649" class="float-btn bg-blue-800"><i data-lucide="facebook"></i></a>
     </div>
@@ -124,7 +124,7 @@
                 <a href="#servicios" class="hover:text-[#d9ab4e] transition">Servicios</a>
                 <a href="#contacto" class="hover:text-[#d9ab4e] transition">Contacto</a>
             </div>
-            <a href="https://wa.me/51980652872" class="btn-gold px-6 py-2 rounded text-xs uppercase">Reserva Cita</a>
+            <a href="https://wa.me/51977662514" class="btn-gold px-6 py-2 rounded text-xs uppercase">Reserva Cita</a>
         </div>
     </nav>
 
@@ -149,7 +149,7 @@
                 <div class="absolute top-0 right-0 w-32 h-32 bg-[#d9ab4e]/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
                 <h3 class="text-2xl font-bold mb-2 text-center">RESERVA TU CITA</h3>
                 <p class="text-center text-[#d9ab4e] text-xs uppercase tracking-widest mb-8">Atención Especializada SUNARP</p>
-                <form action="https://formspree.io/f/mojnerjj" method="POST" class="space-y-4">
+                <form onsubmit="enviarWhatsApp(); return false;" class="space-y-4">
 
 <div class="grid md:grid-cols-2 gap-4">
 <input type="text" name="nombre" placeholder="Nombre completo" required class="w-full bg-white/5 border border-white/10 p-3 rounded text-sm">
@@ -380,9 +380,9 @@ Enviar Solicitud
                             <span class="w-10 h-[2px] bg-[#d9ab4e]"></span> Contacto Rápido
                         </h3>
                         <div class="space-y-6">
-                            <a href="https://wa.me/51980652872" class="flex items-center justify-between p-4 bg-[#152c59] rounded-lg border border-[#d9ab4e]/30 hover:bg-[#d9ab4e] hover:text-[#152c59] transition group">
+                            <a href="https://wa.me/51977662514" class="flex items-center justify-between p-4 bg-[#152c59] rounded-lg border border-[#d9ab4e]/30 hover:bg-[#d9ab4e] hover:text-[#152c59] transition group">
                                 <span class="flex items-center gap-3 font-bold"><i data-lucide="message-square" class="text-[#d9ab4e] group-hover:text-[#152c59]"></i> WhatsApp</span>
-                                <span class="text-xs">980 652 872</span>
+                                <span class="text-xs">977 662 514</span>
                             </a>
                             <a href="tel:044725861" class="flex items-center justify-between p-4 bg-white/5 rounded-lg border border-white/10 hover:border-[#d9ab4e] transition">
                                 <span class="flex items-center gap-3 font-bold"><i data-lucide="phone-call" class="text-[#d9ab4e]"></i> Teléfono Fijo</span>
@@ -507,6 +507,35 @@ form.reset();
 });
 </script>
 
+<script>
+function enviarWhatsApp(){
+
+let nombre = document.querySelector('input[name="nombre"]').value;
+let telefono = document.querySelector('input[name="telefono"]').value;
+let servicio = document.querySelector('select[name="servicio"]').value;
+let mensaje = document.querySelector('textarea[name="mensaje"]').value;
+
+let numero = "51977662514";
+
+let texto =
+"*MACETII – Estudio Técnico Jurídico*%0A%0A" +
+"*Nombre:* " + nombre + "%0A" +
+"*Teléfono:* " + telefono + "%0A" +
+"*Servicio:* " + servicio + "%0A" +
+"*Mensaje:* " + mensaje;
+
+let url = "https://wa.me/" + numero + "?text=" + texto;
+
+window.open(url, "_blank");
+
+}
+</script>
+
 </body>
 </html>
+
+</body>
+</html>
+
+
 
